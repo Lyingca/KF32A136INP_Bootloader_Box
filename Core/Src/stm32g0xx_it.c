@@ -194,7 +194,13 @@ void DMA1_Ch4_7_DMAMUX1_OVR_IRQHandler(void)
 void USART1_IRQHandler(void)
 {
   /* USER CODE BEGIN USART1_IRQn 0 */
-
+    if(RESET != __HAL_UART_GET_FLAG(&huart1, UART_FLAG_IDLE)) {
+      __HAL_UART_CLEAR_IDLEFLAG(&huart1);
+      HAL_UART_DMAStop(&huart1);  //Stop RX DMA
+      usart1_rx_len = BUFFER_SIZE - __HAL_DMA_GET_COUNTER(&hdma_usart1_rx);
+      memcpy(usart1_rx_buffer,usart1_dma_buffer,BUFFER_SIZE);
+      usart1_recv_end_flag = 1;
+    }
   /* USER CODE END USART1_IRQn 0 */
   HAL_UART_IRQHandler(&huart1);
   /* USER CODE BEGIN USART1_IRQn 1 */
@@ -208,7 +214,13 @@ void USART1_IRQHandler(void)
 void USART2_IRQHandler(void)
 {
   /* USER CODE BEGIN USART2_IRQn 0 */
-
+    if(RESET != __HAL_UART_GET_FLAG(&huart2, UART_FLAG_IDLE)) {
+        __HAL_UART_CLEAR_IDLEFLAG(&huart2);
+        HAL_UART_DMAStop(&huart2);  //Stop RX DMA
+        usart2_rx_len = BUFFER_SIZE - __HAL_DMA_GET_COUNTER(&hdma_usart2_rx);
+        memcpy(usart2_rx_buffer,usart2_dma_buffer,BUFFER_SIZE);
+        usart2_recv_end_flag = 1;
+    }
   /* USER CODE END USART2_IRQn 0 */
   HAL_UART_IRQHandler(&huart2);
   /* USER CODE BEGIN USART2_IRQn 1 */

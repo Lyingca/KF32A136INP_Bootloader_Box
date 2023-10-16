@@ -24,7 +24,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "usart_data.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -45,13 +45,16 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+uint8_t ACK[6] = {0xF0,0xF1,0xF2,0xF3,0xF4,0xF5};
+uint8_t NCK[6] = {0xF6,0xF7,0xF8,0xF9,0xFA,0xFB};
+uint8_t PC_ACK = 0x06;
+uint8_t PC_NCK = 0x15;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
+uint8_t containsSubarray(uint8_t* longArray, uint8_t longSize, uint8_t* shortArray, uint8_t shortSize);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -91,7 +94,10 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+    __HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);
+    HAL_UARTEx_ReceiveToIdle_DMA(&huart1,usart1_dma_buffer,BUFFER_SIZE);
+    __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
+    HAL_UARTEx_ReceiveToIdle_DMA(&huart2,usart2_dma_buffer,BUFFER_SIZE);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -99,6 +105,40 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+
+    if(usart2_recv_end_flag)
+    {
+        usart2_recv_end_flag = 0;
+        if(HAL_OK != HAL_UART_Transmit_DMA(&huart1, usart2_rx_buffer, usart2_rx_len))
+        {
+//            Error_Handler();
+        }
+        usart2_rx_len = 0;
+        HAL_UART_Receive_DMA(&huart2,usart2_dma_buffer,BUFFER_SIZE);
+    }
+    if(usart1_recv_end_flag)
+    {
+        usart1_recv_end_flag = 0;
+        if(usart1_rx_len < 64)
+        {
+            if(containsSubarray(usart1_rx_buffer,usart1_rx_len,ACK,6))
+            {
+                if(HAL_OK != HAL_UART_Transmit_DMA(&huart2, &PC_ACK, 1))
+                {
+//                    Error_Handler();
+                }
+            }
+            if(containsSubarray(usart1_rx_buffer,usart1_rx_len,NCK,6))
+            {
+                if(HAL_OK != HAL_UART_Transmit_DMA(&huart2, &PC_NCK, 1))
+                {
+//                    Error_Handler();
+                }
+            }
+        }
+        usart1_rx_len = 0;
+        HAL_UART_Receive_DMA(&huart1,usart1_dma_buffer,BUFFER_SIZE);
+    }
 
     /* USER CODE BEGIN 3 */
   }
@@ -146,7 +186,21 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+uint8_t containsSubarray(uint8_t* longArray, uint8_t longSize, uint8_t* shortArray, uint8_t shortSize)
+{
+    for (int i = 0; i <= longSize - shortSize; i++) {
+        int j;
+        for (j = 0; j < shortSize; j++) {
+            if (longArray[i + j] != shortArray[j]) {
+                break;
+            }
+        }
+        if (j == shortSize) {
+            return 1; // 短数组在长数组中找到匹配
+        }
+    }
+    return 0;
+}
 /* USER CODE END 4 */
 
 /**
