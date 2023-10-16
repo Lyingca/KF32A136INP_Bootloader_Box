@@ -42,4 +42,18 @@ CMakeFiles/KF32A136INP_Bootloader_Box.elf.dir/Core/Src/main.c.obj: \
  D:\JetBrains\CLionProjects\KF32A136INP_Bootloader_Box\Core\Inc/main.h \
  D:\JetBrains\CLionProjects\KF32A136INP_Bootloader_Box\Core\Inc/usart.h \
  D:\JetBrains\CLionProjects\KF32A136INP_Bootloader_Box\Core\Inc/gpio.h \
- D:\JetBrains\CLionProjects\KF32A136INP_Bootloader_Box\Core\Inc/usart_data.h
+ D:\JetBrains\CLionProjects\KF32A136INP_Bootloader_Box\Core\Inc/usart_data.h \
+ d:\stmicroelectronics\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\string.h \
+ d:\stmicroelectronics\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\_ansi.h \
+ d:\stmicroelectronics\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\newlib.h \
+ d:\stmicroelectronics\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\sys\config.h \
+ d:\stmicroelectronics\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\machine\ieeefp.h \
+ d:\stmicroelectronics\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\sys\reent.h \
+ d:\stmicroelectronics\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\_ansi.h \
+ d:\stmicroelectronics\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\sys\_types.h \
+ d:\stmicroelectronics\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\machine\_types.h \
+ d:\stmicroelectronics\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\sys\lock.h \
+ d:\stmicroelectronics\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\sys\cdefs.h \
+ d:\stmicroelectronics\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\sys\_locale.h \
+ d:\stmicroelectronics\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\strings.h \
+ d:\stmicroelectronics\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\sys\string.h

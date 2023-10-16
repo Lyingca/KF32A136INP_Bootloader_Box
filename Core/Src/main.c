@@ -25,6 +25,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "usart_data.h"
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -94,9 +95,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-    __HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);
     HAL_UARTEx_ReceiveToIdle_DMA(&huart1,usart1_dma_buffer,BUFFER_SIZE);
-    __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
     HAL_UARTEx_ReceiveToIdle_DMA(&huart2,usart2_dma_buffer,BUFFER_SIZE);
   /* USER CODE END 2 */
 
@@ -111,7 +110,7 @@ int main(void)
         usart2_recv_end_flag = 0;
         if(HAL_OK != HAL_UART_Transmit_DMA(&huart1, usart2_rx_buffer, usart2_rx_len))
         {
-//            Error_Handler();
+            Error_Handler();
         }
         usart2_rx_len = 0;
         HAL_UART_Receive_DMA(&huart2,usart2_dma_buffer,BUFFER_SIZE);
@@ -125,14 +124,14 @@ int main(void)
             {
                 if(HAL_OK != HAL_UART_Transmit_DMA(&huart2, &PC_ACK, 1))
                 {
-//                    Error_Handler();
+                    Error_Handler();
                 }
             }
             if(containsSubarray(usart1_rx_buffer,usart1_rx_len,NCK,6))
             {
                 if(HAL_OK != HAL_UART_Transmit_DMA(&huart2, &PC_NCK, 1))
                 {
-//                    Error_Handler();
+                    Error_Handler();
                 }
             }
         }
@@ -200,6 +199,22 @@ uint8_t containsSubarray(uint8_t* longArray, uint8_t longSize, uint8_t* shortArr
         }
     }
     return 0;
+}
+
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
+{
+    if (huart->Instance == USART1)
+    {
+        usart1_rx_len = Size;
+        memcpy(usart1_rx_buffer,usart1_dma_buffer,BUFFER_SIZE);
+        usart1_recv_end_flag = 1;
+    }
+    if (huart->Instance == USART2)
+    {
+        usart2_rx_len = Size;
+        memcpy(usart2_rx_buffer,usart2_dma_buffer,BUFFER_SIZE);
+        usart2_recv_end_flag = 1;
+    }
 }
 /* USER CODE END 4 */
 

@@ -126,7 +126,21 @@ CMakeFiles/KF32A136INP_Bootloader_Box.elf.dir/Core/Src/main.c.obj: D:/JetBrains/
   D:/JetBrains/CLionProjects/KF32A136INP_Bootloader_Box/Core/Inc/main.h \
   D:/JetBrains/CLionProjects/KF32A136INP_Bootloader_Box/Core/Inc/usart.h \
   D:/JetBrains/CLionProjects/KF32A136INP_Bootloader_Box/Core/Inc/gpio.h \
-  D:/JetBrains/CLionProjects/KF32A136INP_Bootloader_Box/Core/Inc/usart_data.h
+  D:/JetBrains/CLionProjects/KF32A136INP_Bootloader_Box/Core/Inc/usart_data.h \
+  D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/string.h \
+  D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
+  D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib.h \
+  D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/config.h \
+  D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/ieeefp.h \
+  D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/reent.h \
+  D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h \
+  D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_types.h \
+  D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_types.h \
+  D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/lock.h \
+  D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/cdefs.h \
+  D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_locale.h \
+  D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/strings.h \
+  D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/string.h
 
 CMakeFiles/KF32A136INP_Bootloader_Box.elf.dir/Core/Src/stm32g0xx_hal_msp.c.obj: D:/JetBrains/CLionProjects/KF32A136INP_Bootloader_Box/Core/Src/stm32g0xx_hal_msp.c \
   D:/JetBrains/CLionProjects/KF32A136INP_Bootloader_Box/Core/Inc/main.h \
@@ -1162,8 +1176,6 @@ D:/JetBrains/CLionProjects/KF32A136INP_Bootloader_Box/Core/Src/gpio.c:
 
 D:/JetBrains/CLionProjects/KF32A136INP_Bootloader_Box/Core/Src/main.c:
 
-D:/JetBrains/CLionProjects/KF32A136INP_Bootloader_Box/Core/Src/stm32g0xx_it.c:
-
 D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/_ansi.h:
 
 D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/ieeefp.h:
@@ -1179,6 +1191,8 @@ D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_
 D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/strings.h:
 
 D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/string.h:
+
+D:/JetBrains/CLionProjects/KF32A136INP_Bootloader_Box/Core/Src/stm32g0xx_it.c:
 
 D:/STMicroelectronics/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/stat.h:
 
